@@ -7,8 +7,9 @@ import sys
 
 ver = '0.2.1'
 
-# write default shout.pc path into environment if PKG_CONFIG_PATH is unset
 os.environ['PKG_CONFIG_PATH'] += ':/app/.apt/usr/lib/pkgconfig'
+os.environ['C_INCLUDE_PATH'] += ':/app/.apt/usr/include/'
+os.environ['LIBRARY_PATH'] += ':/app/.apt/usr/lib/'
 
 pkg_config_exists_result = os.system('pkg-config --exists shout 2> /dev/null')
 print os.environ
