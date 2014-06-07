@@ -7,16 +7,14 @@ import sys
 
 ver = '0.2.1'
 
+
 os.environ['PKG_CONFIG_PATH'] += ':/app/.apt/usr/lib/pkgconfig'
 os.environ['C_INCLUDE_PATH'] += ':/app/.apt/usr/include/'
 os.environ['LIBRARY_PATH'] += ':/app/.apt/usr/lib/'
 
-pkg_config_exists_result = os.system('pkg-config --exists shout 2> /dev/null')
-print os.environ
-print "pkg-config --exists shout 2> /dev/null: %s" % pkg_config_exists_result
 
 # Find shout compiler/linker flag via pkgconfig or shout-config
-if pkg_config_exists_result == 0:
+if os.system('pkg-config --exists shout 2> /dev/null') == 0:
   pkgcfg = os.popen('pkg-config --cflags shout')
   cflags = pkgcfg.readline().strip()
   pkgcfg.close()
