@@ -11,8 +11,12 @@ ver = '0.2.1'
 if not os.environ.has_key('PKG_CONFIG_PATH'):
   os.environ['PKG_CONFIG_PATH'] = '/app/.apt/usr/lib/pkgconfig'
 
+pkg_config_exists_result = os.system('pkg-config --exists shout 2> /dev/null')
+print os.environ
+print "pkg-config --exists shout 2> /dev/null: %s" % pkg_config_exists_result
+
 # Find shout compiler/linker flag via pkgconfig or shout-config
-if os.system('pkg-config --exists shout 2> /dev/null') == 0:
+if pkg_config_exists_result == 0:
   pkgcfg = os.popen('pkg-config --cflags shout')
   cflags = pkgcfg.readline().strip()
   pkgcfg.close()
