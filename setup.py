@@ -8,9 +8,9 @@ import sys
 ver = '0.2.1'
 
 
-os.environ['PKG_CONFIG_PATH'] += ':/app/.apt/usr/lib/pkgconfig'
-os.environ['C_INCLUDE_PATH'] += ':/app/.apt/usr/include/'
-os.environ['LIBRARY_PATH'] += ':/app/.apt/usr/lib/'
+os.environ['PKG_CONFIG_PATH'] += ':/app/.apt/usr/lib/pkgconfig:/app/.dpkg/usr/lib/x86_64-linux-gnu/pkgconfig/'
+os.environ['C_INCLUDE_PATH'] += ':/app/.apt/usr/include/:/app/.dpkg/usr/include/'
+os.environ['LIBRARY_PATH'] += ':/app/.apt/usr/lib/:/app/.dpkg/usr/lib/x86_64-linux-gnu/'
 
 
 # Find shout compiler/linker flag via pkgconfig or shout-config
